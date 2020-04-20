@@ -1,0 +1,139 @@
+{
+  "name": "live-stylus",
+  "displayName": "stylus2wxss",
+  "description": "*.styl to *.wxss",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.44.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:stylus.helloWorld",
+    "workspaceContains:**/*.styl[us]",
+    "onLanguage:stylus"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "stylus.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "liveStylus.command.watchMyStylus",
+        "title": "Watch stylus",
+        "category": "Live Stylus"
+      },
+      {
+        "command": "liveStylus.command.donotWatchMyStylus",
+        "title": "Stop Watching",
+        "category": "Live Stylus"
+      },
+      {
+        "command": "liveStylus.command.oneTimeCompilestylus",
+        "title": "Compile stylus - Without Watch Mode",
+        "category": "Live Stylus"
+      },
+      {
+        "command": "liveStylus.command.openOutputWindow",
+        "title": "Open Live Stylus Output Window",
+        "category": "Live Stylus"
+      }
+    ],
+    "configuration": {
+      "title": "Live Stylus Compile Config",
+      "properties": {
+        "stylusCompile.settings.formats": {
+          "type": "array",
+          "default": [
+            {
+              "extensionName": ".wxss",
+              "savePath": null
+            }
+          ],
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "extensionName": {
+                "description": "Extension Name of exported css",
+                "type": "string",
+                "enum": [
+                  ".css",
+                  ".min.css",
+                  ".wxss"
+                ],
+                "default": ".css"
+              },
+              "savePath": {
+                "description": "Set the save location of exported CSS.\n Set the relative path from Workspace Root.\n '/' stands for your workspace root. \n Example: /subfolder1/subfolder2. (NOTE: if folder does not exist, folder will be created as well).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[\\~|/|\\\\]",
+                "default": null
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "extensionName"
+            ]
+          },
+          "description": "Set your exported CSS Styles, Formats & save location."
+        },
+        "stylusCompile.settings.excludeList": {
+          "type": "array",
+          "default": [
+            "**/node_modules/**",
+            ".vscode/**"
+          ],
+          "description": "All stylus/Scss files inside the folders will be excluded. \n\nExamples: \n'**/node_modules/**',\n'.vscode/**', \n'.history/**' \n\nGlob Patterns are accepted."
+        },
+        "stylusCompile.settings.includeItems": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "default": null,
+          "description": "This setting is useful when you deals with only few of stylus files. Only mentioned stylus files will be included. \nNOTE: No need to include partial stylus files."
+        },
+        "stylusCompile.settings.showOutputWindow": {
+          "type": "boolean",
+          "default": true,
+          "description": "Set this to `false` if you do not want the output window to show.\nNote: You can use the command palette to open the Live Stylus output window.\nDefault is `true`"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.44.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.1",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "@types/autoprefixer": "^9.7.2",
+    "@types/stylus": "^0.48.32",
+    "autoprefixer": "^9.7.6",
+    "postcss": "^7.0.27",
+    "stylus": "^0.54.7"
+  }
+}
