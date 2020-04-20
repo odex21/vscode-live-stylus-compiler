@@ -22,6 +22,7 @@ export class StylusHelper {
     return new Promise<any>(async (resolve, reject) => {
       const config = await this.getCustomConfig()
       const str = fs.readFileSync(stylusPath, "utf8")
+
       const instance = Stylus(str)
       if (config?.set) {
         instance.use(config.set)

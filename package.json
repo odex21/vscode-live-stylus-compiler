@@ -1,26 +1,23 @@
 {
-  "name": "live-stylus",
-  "displayName": "stylus2wxss",
-  "description": "*.styl to *.wxss",
-  "version": "0.0.1",
+  "name": "live-stylus-compiler",
+  "displayName": "Live Stylus Compiler",
+  "description": "*.styl to *.wxss or *.css",
+  "publisher": "live-stylus-pub",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.44.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Extension Packs"
   ],
   "main": "./out/extension.js",
   "activationEvents": [
-    "onCommand:stylus.helloWorld",
     "workspaceContains:**/*.styl[us]",
     "onLanguage:stylus"
   ],
   "contributes": {
     "commands": [
-      {
-        "command": "stylus.helloWorld",
-        "title": "Hello World"
-      },
       {
         "command": "liveStylus.command.watchMyStylus",
         "title": "Watch stylus",
@@ -90,7 +87,7 @@
             "**/node_modules/**",
             ".vscode/**"
           ],
-          "description": "All stylus/Scss files inside the folders will be excluded. \n\nExamples: \n'**/node_modules/**',\n'.vscode/**', \n'.history/**' \n\nGlob Patterns are accepted."
+          "description": "All stylus files inside the folders will be excluded. \n\nExamples: \n'**/node_modules/**',\n'.vscode/**', \n'.history/**' \n\nGlob Patterns are accepted."
         },
         "stylusCompile.settings.includeItems": {
           "type": [
@@ -135,5 +132,14 @@
     "autoprefixer": "^9.7.6",
     "postcss": "^7.0.27",
     "stylus": "^0.54.7"
-  }
+  },
+  "author": {
+    "name": "odex",
+    "email": "odex_2100@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:odex21/vscode-live-stylus-compiler.git"
+  },
+  "license": "MIT"
 }
