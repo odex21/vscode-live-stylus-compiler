@@ -130,7 +130,7 @@
     "@types/autoprefixer": "^9.7.2",
     "@types/stylus": "^0.48.32",
     "autoprefixer": "^9.7.6",
-    "postcss": "^7.0.27",
+    "postcss": "^7.0.36",
     "stylus": "^0.54.7"
   },
   "author": {
