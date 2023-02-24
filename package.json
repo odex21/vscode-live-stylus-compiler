@@ -3,7 +3,7 @@
   "displayName": "Live Stylus Compiler",
   "description": "*.styl to *.wxss or *.css",
   "publisher": "live-stylus-pub",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.44.0"
   },
