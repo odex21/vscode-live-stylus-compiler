@@ -176,7 +176,7 @@ export class AppModel {
         if (result.status !== 0) {
           OutputWindow.Show(
             "Compilation Error",
-            [ result.formatted ],
+            [ result.formatted, result.text ],
             showOutputWindow
           )
           StatusBarUi.compilationError(this.isWatching)

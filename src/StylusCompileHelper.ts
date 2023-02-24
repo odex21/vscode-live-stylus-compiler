@@ -36,7 +36,7 @@ export class StylusHelper {
         }
         if (error) {
           result.formatted = error.name
-          result.text = `/* \n Error: ${error.message} \n */`
+          result.text = `Error: ${error.message}`
           result.status = 1
         } else {
           result.text = css
